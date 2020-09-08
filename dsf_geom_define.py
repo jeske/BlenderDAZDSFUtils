@@ -38,6 +38,9 @@ class dsf_geom_define (object):
     for vert_idx in range (n_verts):
       vert_coords = v[3*vert_idx : 3*vert_idx+3]
       bmesh_dat.verts.new (vert_coords)
+
+    bmesh_dat.verts.ensure_lookup_table()  # we have to update the lookup table in 2.73+
+
     # each face has exactly 4 vertex indices.
     f = geom['f']
     for (face_idx, face_vis) in enumerate (f):
